@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
     model: any = {};
 
-    constructor(private accountService: AccountService) { }
+    constructor(private accountService: AccountService, private toastr: ToastrService) { }
 
     ngOnInit(): void {
     }
@@ -29,7 +30,8 @@ export class RegisterComponent implements OnInit {
             this.cancel();
         }, error => {
             console.log(error);
-        })
+            this.toastr.error(error.error);
+        }) 
     }
     
     //click cancel button, we want to emit value
