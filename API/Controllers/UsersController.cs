@@ -18,7 +18,6 @@ namespace API.Controllers
             _context = context;
         }
 
-
         //Fetch the data from the database
         [HttpGet]
         [AllowAnonymous]
